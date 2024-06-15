@@ -1,0 +1,53 @@
+Schema Design for Yellow Taxi Trip Records
+
+Fact Table
+
+fact_yellow_taxi_trips
+    trip_id (Primary Key)
+    vendor_id (Foreign Key to dim_vendor)
+    pickup_datetime
+    dropoff_datetime
+    passenger_count
+    trip_distance
+    pulocation_id (Foreign Key to dim_location)
+    dolocation_id (Foreign Key to dim_location)
+    rate_code_id (Foreign Key to dim_rate_code)
+    store_and_fwd_flag
+    payment_type_id (Foreign Key to dim_payment_type)
+    fare_amount
+    extra
+    mta_tax
+    improvement_surcharge
+    tip_amount
+    tolls_amount
+    total_amount
+    congestion_surcharge
+    airport_fee
+    pickup_time_id (Foreign Key to dim_time)
+    dropoff_time_id (Foreign Key to dim_time)
+
+Dimension Tables
+    dim_vendor
+    vendor_id (Primary Key)
+    vendor_name
+
+dim_location
+    location_id (Primary Key)
+    location_name
+
+dim_rate_code
+    rate_code_id (Primary Key)
+    rate_code_description
+
+dim_payment_type
+    payment_type_id (Primary Key)
+    payment_type_description
+
+dim_time
+    time_id (Primary Key)
+    date (Date)
+    month (Integer)
+    year (Integer)
+    day (Integer)
+    week (Integer)
+    quarter (Integer)
