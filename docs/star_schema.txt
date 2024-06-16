@@ -5,13 +5,13 @@ Fact Table
 fact_yellow_taxi_trips
     trip_id: BIGINT (PK)
     vendor_id: INTEGER (FK to dim_vendor)
-    pulocation_id: INTEGER (FK to dim_location)
-    dolocation_id: INTEGER (FK to dim_location)
     rate_code_id: INTEGER (FK to dim_rate_code)
     payment_type_id: INTEGER (FK to dim_payment_type)
     tpep_pickup_time_id: INTEGER (FK to dim_time)
     tpep_dropoff_time_id: INTEGER (FK to dim_time)
     passenger_count: INTEGER
+    pulocation_id: INTEGER 
+    dolocation_id: INTEGER 
     trip_distance: FLOAT
     store_and_fwd_flag: CHAR(1)
     fare_amount: FLOAT
@@ -22,7 +22,7 @@ fact_yellow_taxi_trips
     tolls_amount: FLOAT
     total_amount: FLOAT
     congestion_surcharge: FLOAT
-    airport_fee: OBJECT
+    airport_fee: VARCHAR(10)
     
 
 Dimension Tables
@@ -30,9 +30,6 @@ Dimension Tables
 dim_vendor
     vendor_id: INTEGER (PK)
     vendor_description VARCHAR(50)
-
-dim_location
-    location_id: INTEGER (PK)
 
 dim_rate_code
     rate_code_id: INTEGER (PK)
