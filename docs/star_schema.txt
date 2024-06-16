@@ -5,15 +5,15 @@ Fact Table
 fact_yellow_taxi_trips
     trip_id (Primary Key)
     vendor_id (Foreign Key to dim_vendor)
-    pickup_datetime
-    dropoff_datetime
-    passenger_count
-    trip_distance
     pulocation_id (Foreign Key to dim_location)
     dolocation_id (Foreign Key to dim_location)
     rate_code_id (Foreign Key to dim_rate_code)
-    store_and_fwd_flag
     payment_type_id (Foreign Key to dim_payment_type)
+    tpep_pickup_time_id (Foreign Key to dim_time)
+    tpep_dropoff_time_id (Foreign Key to dim_time)
+    passenger_count
+    trip_distance
+    store_and_fwd_flag
     fare_amount
     extra
     mta_tax
@@ -23,17 +23,18 @@ fact_yellow_taxi_trips
     total_amount
     congestion_surcharge
     airport_fee
-    pickup_time_id (Foreign Key to dim_time)
-    dropoff_time_id (Foreign Key to dim_time)
+    
 
 Dimension Tables
-    dim_vendor
+    
+dim_vendor
     vendor_id (Primary Key)
     vendor_name
 
 dim_location
     location_id (Primary Key)
-    location_name
+    location_latitude
+    location_longitude
 
 dim_rate_code
     rate_code_id (Primary Key)
