@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+duckdb = "==1.0.0"
+py4j = "==0.10.9.7"
+pyspark = "==3.5.1"
+polars = "*"
+pyarrow = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
+
+[scripts]
+payment = "python -m src.extraction_files.dim_payment_type"
+rate_code = "python -m src.extraction_files.dim_rate_code"
+vendor = "python -m src.extraction_files.dim_vendor_etl"

@@ -1,4 +1,4 @@
-from base_files.duckdb_base_etl import DuckDBBaseETL
+from src.base_files.duckdb_base_etl import DuckDBBaseETL
 
 class DimPaymentTypeETL(DuckDBBaseETL):
 

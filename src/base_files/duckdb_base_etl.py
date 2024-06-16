@@ -1,6 +1,6 @@
 import polars as pl
 
-from duckdb_hook import DuckDBHook
+from src.base_files.duckdb_hook import DuckDBHook
 
 class DuckDBBaseETL():
 
