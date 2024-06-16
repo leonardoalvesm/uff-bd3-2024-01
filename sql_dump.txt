@@ -1,0 +1,66 @@
+-- Create Schema for Yellow Taxi Trip Records
+
+-- Create Dimension Table: dim_vendor
+CREATE TABLE dim_vendor (
+    vendor_id INTEGER PRIMARY KEY,
+    vendor_description VARCHAR(50)
+);
+
+-- Create Dimension Table: dim_location
+CREATE TABLE dim_location (
+    location_id INTEGER PRIMARY KEY
+);
+
+-- Create Dimension Table: dim_rate_code
+CREATE TABLE dim_rate_code (
+    rate_code_id INTEGER PRIMARY KEY,
+    rate_code_description VARCHAR(50)
+);
+
+-- Create Dimension Table: dim_payment_type
+CREATE TABLE dim_payment_type (
+    payment_type_id INTEGER PRIMARY KEY,
+    payment_type_description VARCHAR(20)
+);
+
+-- Create Dimension Table: dim_time
+CREATE TABLE dim_time (
+    time_id INTEGER PRIMARY KEY,
+    date DATE,
+    month INTEGER,
+    year INTEGER,
+    day INTEGER,
+    week INTEGER,
+    quarter INTEGER
+);
+
+-- Create Fact Table: fact_yellow_taxi_trips
+CREATE TABLE fact_yellow_taxi_trips (
+    trip_id BIGINT PRIMARY KEY,
+    vendor_id INTEGER,
+    pulocation_id INTEGER,
+    dolocation_id INTEGER,
+    rate_code_id INTEGER,
+    payment_type_id INTEGER,
+    tpep_pickup_time_id INTEGER,
+    tpep_dropoff_time_id INTEGER,
+    passenger_count INTEGER,
+    trip_distance FLOAT,
+    store_and_fwd_flag CHAR(1),
+    fare_amount FLOAT,
+    extra FLOAT,
+    mta_tax FLOAT,
+    improvement_surcharge FLOAT,
+    tip_amount FLOAT,
+    tolls_amount FLOAT,
+    total_amount FLOAT,
+    congestion_surcharge FLOAT,
+    airport_fee FLOAT,
+    FOREIGN KEY (vendor_id) REFERENCES dim_vendor(vendor_id),
+    FOREIGN KEY (pulocation_id) REFERENCES dim_location(location_id),
+    FOREIGN KEY (dolocation_id) REFERENCES dim_location(location_id),
+    FOREIGN KEY (rate_code_id) REFERENCES dim_rate_code(rate_code_id),
+    FOREIGN KEY (payment_type_id) REFERENCES dim_payment_type(payment_type_id),
+    FOREIGN KEY (tpep_pickup_time_id) REFERENCES dim_time(time_id),
+    FOREIGN KEY (tpep_dropoff_time_id) REFERENCES dim_time(time_id)
+);
